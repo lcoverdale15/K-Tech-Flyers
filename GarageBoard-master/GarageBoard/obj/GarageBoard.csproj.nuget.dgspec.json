@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\footb\\OneDrive\\Desktop\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj": {}
+    "C:\\Users\\footb\\source\\repos\\K-Tech-Flyers\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\footb\\OneDrive\\Desktop\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj": {
+    "C:\\Users\\footb\\source\\repos\\K-Tech-Flyers\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\footb\\OneDrive\\Desktop\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj",
+        "projectUniqueName": "C:\\Users\\footb\\source\\repos\\K-Tech-Flyers\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj",
         "projectName": "GarageBoard",
-        "projectPath": "C:\\Users\\footb\\OneDrive\\Desktop\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj",
+        "projectPath": "C:\\Users\\footb\\source\\repos\\K-Tech-Flyers\\GarageBoard-master\\GarageBoard\\GarageBoard.csproj",
         "packagesPath": "C:\\Users\\footb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\footb\\OneDrive\\Desktop\\GarageBoard-master\\GarageBoard\\obj\\",
+        "outputPath": "C:\\Users\\footb\\source\\repos\\K-Tech-Flyers\\GarageBoard-master\\GarageBoard\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows"
+          "net7.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
-            "targetAlias": "net8.0-windows",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
         },
@@ -41,8 +41,14 @@
         }
       },
       "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "HiveMQtt": {
+              "target": "Package",
+              "version": "[0.26.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -54,6 +60,14 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }

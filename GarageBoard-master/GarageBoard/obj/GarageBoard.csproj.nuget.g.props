@@ -13,4 +13,14 @@
     <SourceRoot Include="C:\Users\footb\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)hivemqtt\0.26.1\contentFiles\any\net7.0\NLog.config" Condition="Exists('$(NuGetPackageRoot)hivemqtt\0.26.1\contentFiles\any\net7.0\NLog.config')">
+      <NuGetPackageId>HiveMQtt</NuGetPackageId>
+      <NuGetPackageVersion>0.26.1</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>NLog.config</Link>
+    </Content>
+  </ItemGroup>
 </Project>

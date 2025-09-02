@@ -10,7 +10,7 @@ namespace GarageBoard
 
         private bool currentState = false;
 
-        private List<string> validCards = [];
+        private List<string> validCards = new List<string>();
 
         private string lastUID = "";
         private string recentUID = "";
@@ -140,7 +140,7 @@ namespace GarageBoard
 
         public List<string> GetNFCCards()
         {
-            List<string> result = [];
+            List<string> result = new List<string>();
             using (StreamReader sr = new StreamReader("validNFCs.txt"))
             {
                 while (!sr.EndOfStream)
