@@ -28,13 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.TDLabel = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // TDLabel
+            // 
+            this.TDLabel.AutoSize = true;
+            this.TDLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(10)))), ((int)(((byte)(87)))));
+            this.TDLabel.Font = new System.Drawing.Font("Bookman Old Style", 28F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TDLabel.ForeColor = System.Drawing.Color.White;
+            this.TDLabel.Location = new System.Drawing.Point(34, 9);
+            this.TDLabel.Name = "TDLabel";
+            this.TDLabel.Size = new System.Drawing.Size(731, 65);
+            this.TDLabel.TabIndex = 0;
+            this.TDLabel.Text = "K-Tech Flyers Tech Disc";
+            this.TDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.TDLabel);
+            this.Name = "Form1";
+            this.Text = "Tech Disc App";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label TDLabel;
     }
 }
 
