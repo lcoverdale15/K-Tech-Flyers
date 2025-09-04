@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GarageBoard-master",
+    "\\GarageBoard-master\\GarageBoard"
   ],
-  "SelectedNode": "\\GarageBoard.sln",
+  "SelectedNode": "\\GarageBoard-master\\GarageBoard\\GarageForm.cs",
   "PreviewInSolutionExplorer": false
 }
