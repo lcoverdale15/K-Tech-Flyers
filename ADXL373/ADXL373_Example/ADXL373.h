@@ -87,161 +87,73 @@ private:
   static constexpr float MG_PER_LSB = 200.0f; // 200 mg/LSB per datasheet (12-bit)
 };
 
-/* Register map (from datasheet) 
-#define ADXL373_REG_DEVID           0x00
-#define ADXL373_REG_MEMS_ID         0x01
-#define ADXL373_REG_PARTID          0x02
-#define ADXL373_REG_REVID           0x03
-#define ADXL373_REG_STATUS          0x04
-#define ADXL373_REG_STATUS2         0x05
-#define ADXL373_REG_XDATA_MSB       0x06
-#define ADXL373_REG_XDATA_LSB       0x07
-#define ADXL373_REG_YDATA_MSB       0x08
-#define ADXL373_REG_YDATA_LSB       0x09
-#define ADXL373_REG_ZDATA_MSB       0x0A
-#define ADXL373_REG_ZDATA_LSB       0x0B
-#define ADXL373_REG_OFF_X           0x0C
-#define ADXL373_REG_OFF_Y           0x0D
-#define ADXL373_REG_OFF_Z           0x0E
-#define ADXL373_REG_THRESH_ACT_X_L  0x0F
-#define ADXL373_REG_THRESH_ACT_X_H  0x10
-#define ADXL373_REG_THRESH_ACT_Y_L  0x11
-#define ADXL373_REG_THRESH_ACT_Y_H  0x12
-#define ADXL373_REG_THRESH_ACT_Z_L  0x13
-#define ADXL373_REG_THRESH_ACT_Z_H  0x14
-#define ADXL373_REG_TIME_ACT        0x15
-#define ADXL373_REG_THRESH_INACT_X_L 0x16
-#define ADXL373_REG_THRESH_INACT_X_H 0x17
-#define ADXL373_REG_THRESH_INACT_Y_L 0x18
-#define ADXL373_REG_THRESH_INACT_Y_H 0x19
-#define ADXL373_REG_THRESH_INACT_Z_L 0x1A
-#define ADXL373_REG_THRESH_INACT_Z_H 0x1B
-#define ADXL373_REG_TIME_INACT_L    0x1C
-#define ADXL373_REG_TIME_INACT_H    0x1D
-#define ADXL373_REG_THRESH_MOTION_X_L 0x1E
-#define ADXL373_REG_THRESH_MOTION_X_H 0x1F
-#define ADXL373_REG_THRESH_MOTION_Y_L 0x20
-#define ADXL373_REG_THRESH_MOTION_Y_H 0x21
-#define ADXL373_REG_THRESH_MOTION_Z_L 0x22
-#define ADXL373_REG_THRESH_MOTION_Z_H 0x23
-#define ADXL373_REG_HP_FILTER       0x24
-#define ADXL373_REG_FIFO_SAMPLES    0x25
-#define ADXL373_REG_FIFO_CTL        0x26
-#define ADXL373_REG_INT_MAP1        0x27
-#define ADXL373_REG_INT_MAP2        0x28
-#define ADXL373_REG_EXT_TIMING      0x29
-#define ADXL373_REG_MEASURE_CTL     0x2A
-#define ADXL373_REG_POWER_CTL       0x2B
-#define ADXL373_REG_SELF_TEST       0x2C
-#define ADXL373_REG_RESET           0x2D
-#define ADXL373_REG_FIFO_ACCESS     0x2E
-
-/* Useful bits 
-#define ADXL373_MEASURE_CTL_ODR_MASK     0x07
-#define ADXL373_MEASURE_CTL_LN_BIT       0x10
-#define ADXL373_MEASURE_CTL_FILTER_SETTLE 0x20
-
-#define ADXL373_POWER_CTL_MEASURE        0x01
-#define ADXL373_RESET_SOFT               0x52 // write to RESET in standby to reset*/
-
 #define ADXL373_REG_DEVID               0x00    // Device ID (fixed = 0xAD)
-#define ADXL373_REG_MEMS_ID             0x01    // MEMS ID (fixed = 0x1D)
+#define ADXL373_REG_DEVID_MST           0x01    // MEMS ID (fixed = 0x1D)
 #define ADXL373_REG_PARTID              0x02    // Part ID (fixed = 0xFA)
 #define ADXL373_REG_REVID               0x03    // Revision ID
 #define ADXL373_REG_STATUS              0x04    // Status register
 #define ADXL373_REG_STATUS2             0x05    // Status 2 register
 
 // Output Data Registers
-#define ADXL373_REG_XDATA_H             0x06    // X-axis data [15:8]
-#define ADXL373_REG_XDATA_L             0x07    // X-axis data [7:0]
-#define ADXL373_REG_YDATA_H             0x08    // Y-axis data [15:8]
-#define ADXL373_REG_YDATA_L             0x09    // Y-axis data [7:0]
-#define ADXL373_REG_ZDATA_H             0x0A    // Z-axis data [15:8]
-#define ADXL373_REG_ZDATA_L             0x0B    // Z-axis data [7:0]
+#define ADXL373_REG_FIFO_ENTRIES2       0x06
+#define ADXL373_REG_FIFO_ENTRIES        0x07
+#define ADXL373_REG_XDATA_H             0x08    // X-axis data [15:8]
+#define ADXL373_REG_XDATA_L             0x09    // X-axis data [7:0]
+#define ADXL373_REG_YDATA_H             0x0A    // Y-axis data [15:8]
+#define ADXL373_REG_YDATA_L             0x0B    // Y-axis data [7:0]
+#define ADXL373_REG_ZDATA_H             0x0C    // Z-axis data [15:8]
+#define ADXL373_REG_ZDATA_L             0x0D    // Z-axis data [7:0]
 
 // Offset and Threshold Registers
-#define ADXL373_REG_OFF_X               0x0C
-#define ADXL373_REG_OFF_Y               0x0D
-#define ADXL373_REG_OFF_Z               0x0E
+#define ADXL373_REG_MAXPREAK_X_H        0x15
+#define ADXL373_REG_MAXPREAK_X_L        0x16
+#define ADXL373_REG_MAXPREAK_Y_H        0x17
+#define ADXL373_REG_MAXPREAK_Y_L        0x18
+#define ADXL373_REG_MAXPREAK_Z_H        0x19
+#define ADXL373_REG_MAXPREAK_Z_L        0x1A
 
-#define ADXL373_REG_THRESH_ACT_X_L      0x0F
-#define ADXL373_REG_THRESH_ACT_X_H      0x10
-#define ADXL373_REG_THRESH_ACT_Y_L      0x11
-#define ADXL373_REG_THRESH_ACT_Y_H      0x12
-#define ADXL373_REG_THRESH_ACT_Z_L      0x13
-#define ADXL373_REG_THRESH_ACT_Z_H      0x14
-#define ADXL373_REG_TIME_ACT            0x15
+#define ADXL373_REG_OFFSET_X            0x20
+#define ADXL373_REG_OFFSET_Y            0x21
+#define ADXL373_REG_OFFSET_Z            0x22
 
-#define ADXL373_REG_THRESH_INACT_X_L    0x16
-#define ADXL373_REG_THRESH_INACT_X_H    0x17
-#define ADXL373_REG_THRESH_INACT_Y_L    0x18
-#define ADXL373_REG_THRESH_INACT_Y_H    0x19
-#define ADXL373_REG_THRESH_INACT_Z_L    0x1A
-#define ADXL373_REG_THRESH_INACT_Z_H    0x1B
-#define ADXL373_REG_TIME_INACT_L        0x1C
-#define ADXL373_REG_TIME_INACT_H        0x1D
+#define ADXL373_REG_THRESH_ACT_X_L      0x24
+#define ADXL373_REG_THRESH_ACT_X_H      0x23
+#define ADXL373_REG_THRESH_ACT_Y_L      0x26
+#define ADXL373_REG_THRESH_ACT_Y_H      0x25
+#define ADXL373_REG_THRESH_ACT_Z_L      0x28
+#define ADXL373_REG_THRESH_ACT_Z_H      0x27
+#define ADXL373_REG_TIME_ACT            0x29
 
-#define ADXL373_REG_THRESH_MOTION_X_L   0x1E
-#define ADXL373_REG_THRESH_MOTION_X_H   0x1F
-#define ADXL373_REG_THRESH_MOTION_Y_L   0x20
-#define ADXL373_REG_THRESH_MOTION_Y_H   0x21
-#define ADXL373_REG_THRESH_MOTION_Z_L   0x22
-#define ADXL373_REG_THRESH_MOTION_Z_H   0x23
+#define ADXL373_REG_THRESH_INACT_X_L    0x2B
+#define ADXL373_REG_THRESH_INACT_X_H    0x2A
+#define ADXL373_REG_THRESH_INACT_Y_L    0x2D
+#define ADXL373_REG_THRESH_INACT_Y_H    0x2C
+#define ADXL373_REG_THRESH_INACT_Z_L    0x2F
+#define ADXL373_REG_THRESH_INACT_Z_H    0x2E
+#define ADXL373_REG_TIME_INACT_L        0x31
+#define ADXL373_REG_TIME_INACT_H        0x30
+#define ADXL373_REG_THRESH_ACT2_X_H     0x32
+#define ADXL373_REG_THRESH_ACT2_X_L     0x33
+#define ADXL373_REG_THRESH_ACT2_Y_H     0x34
+#define ADXL373_REG_THRESH_ACT2_Y_L     0x35
+#define ADXL373_REG_THRESH_ACT2_Z_H     0x36
+#define ADXL373_REG_THRESH_ACT2_Z_L     0x37
 
 // Filter and FIFO Control
-#define ADXL373_REG_HP_FILTER           0x24
-#define ADXL373_REG_FIFO_SAMPLES        0x25
-#define ADXL373_REG_FIFO_CTL            0x26
+#define ADXL373_REG_HPF                 0x38
+#define ADXL373_REG_FIFO_SAMPLES        0x39
+#define ADXL373_REG_FIFO_CTL            0x3A
 
 // Interrupt Mapping
-#define ADXL373_REG_INT_MAP1            0x27
-#define ADXL373_REG_INT_MAP2            0x28
+#define ADXL373_REG_INT_MAP1            0x3B
+#define ADXL373_REG_INT_MAP2            0x3C
 
 // Timing and Measurement Control
-#define ADXL373_REG_EXT_TIMING          0x29
-#define ADXL373_REG_MEASURE_CTL         0x2A
-#define ADXL373_REG_POWER_CTL           0x2B
-#define ADXL373_REG_SELF_TEST           0x2C
-#define ADXL373_REG_RESET               0x2D
-#define ADXL373_REG_FIFO_ACCESS         0x2E
-
-// Internal/Reserved Registers (0x2F–0x3F are internal use)
-
-// ============================================================================
-// USEFUL BIT DEFINITIONS (from datasheet)
-// ============================================================================
-
-// STATUS Register (0x04)
-#define ADXL373_STATUS_DATA_RDY         0x01    // New data ready
-#define ADXL373_STATUS_FIFO_RDY         0x02
-#define ADXL373_STATUS_FIFO_FULL        0x04
-#define ADXL373_STATUS_FIFO_OVR         0x08
-#define ADXL373_STATUS_ACTIVITY         0x10
-#define ADXL373_STATUS_INACTIVITY       0x20
-#define ADXL373_STATUS_AWAKE            0x40
-#define ADXL373_STATUS_ERR              0x80
-
-// MEASURE_CTL (0x2A)
-#define ADXL373_MEASURE_CTL_ODR_MASK        0x07    // Bits [2:0] set output data rate
-#define ADXL373_MEASURE_CTL_LN_BIT          0x10    // Low-noise mode enable
-#define ADXL373_MEASURE_CTL_FILTER_SETTLE   0x20    // Filter settle enable
-
-// POWER_CTL (0x2B)
-#define ADXL373_POWER_CTL_STANDBY       0x00
-#define ADXL373_POWER_CTL_MEASURE       0x01
-#define ADXL373_POWER_CTL_AUTOSLEEP     0x02
-
-// RESET Register (0x2D)
-#define ADXL373_RESET_SOFT              0x52    // Write 0x52 to reset (only in standby)
-
-// FIFO_CTL (0x26)
-#define ADXL373_FIFO_MODE_MASK          0x03
-#define ADXL373_FIFO_MODE_BYPASS        0x00
-#define ADXL373_FIFO_MODE_FIFO          0x01
-#define ADXL373_FIFO_MODE_STREAM        0x02
-#define ADXL373_FIFO_MODE_TRIGGER       0x03
-
-// HP_FILTER (0x24)
-#define ADXL373_HPF_CORNER_MASK         0x07    // Bits [2:0] select HP filter corner
+#define ADXL373_REG_TIMING              0x3D
+#define ADXL373_REG_MEASURE             0x3E
+#define ADXL373_REG_POWER_CTL           0x3F
+#define ADXL373_REG_SELF_TEST           0x40
+#define ADXL373_REG_RESET               0x41
+#define ADXL373_REG_FIFO_DATA           0x42
 
 #endif // ADXL373_H
